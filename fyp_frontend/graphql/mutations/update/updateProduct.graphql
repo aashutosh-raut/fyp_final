@@ -1,0 +1,30 @@
+mutation UpdateProduct(
+  $name: String!
+  $description: String!
+  $collateralDescription: String!
+  $rentingPrice: Int!
+  $isAvailable: Boolean!
+  $condition: ProductConditionEnum!
+  $userId: String!
+  $productId: String!
+  $productPicture: String!
+  $productCategory: CategoryNameEnum!
+) {
+  updateProduct(
+    data: {
+      name: { set: $name }
+      description: { set: $description }
+      collateralDescription: { set: $collateralDescription }
+      rentingPrice: { set: $rentingPrice }
+      isAvailable: { set: $isAvailable }
+      condition: { set: $condition }
+      productPicture: { set: $productPicture }
+      user: { connect: { id: $userId } }
+      productCategory: { connect: { name: $productCategory } }
+    }
+    where: { id: $productId }
+  ) {
+    id
+    name
+  }
+}

@@ -1,0 +1,6 @@
+mutation DeleteProduct($id: String!) {
+  deleteProduct(where: { id: $id }) {
+    id
+    name
+  }
+}

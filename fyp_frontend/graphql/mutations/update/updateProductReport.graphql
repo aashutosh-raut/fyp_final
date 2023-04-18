@@ -1,0 +1,13 @@
+mutation UpdateProductReport(
+  $userId: String!
+  $productId: String!
+  $comment: String!
+) {
+  updateProductReport(
+    where: { userId_productId: { userId: $userId, productId: $productId } }
+    data: { comment: { set: $comment } }
+  ) {
+    id
+    comment
+  }
+}

@@ -1,0 +1,18 @@
+mutation CreateRentRequest(
+  $rentPeriod: Int!
+  $dayOfRequest: DateTime!
+  $userId: String!
+  $productId: String!
+) {
+  createRentRequest(
+    data: {
+      rentPeriod: $rentPeriod
+      dayOfRequest: $dayOfRequest
+      user: { connect: { id: $userId } }
+      product: { connect: { id: $productId } }
+    }
+  ) {
+    id
+    userId
+  }
+}

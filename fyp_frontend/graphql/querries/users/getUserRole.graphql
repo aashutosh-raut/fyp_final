@@ -1,0 +1,5 @@
+query GetUserRole($id: String!) {
+  user(where: { id: $id }) {
+    userRoleName
+  }
+}

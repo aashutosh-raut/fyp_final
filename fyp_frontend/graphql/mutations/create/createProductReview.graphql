@@ -1,0 +1,26 @@
+mutation CreateProductReview(
+  $rating: Int!
+  $comment: String!
+  $productId: String!
+  $userId: String!
+) {
+  createProductReview(
+    data: {
+      rating: $rating
+      comment: $comment
+      product: { connect: { id: $productId } }
+      user: { connect: { id: $userId } }
+    }
+  ) {
+    id
+    rating
+    comment
+    ownersReply
+    productId
+    user {
+      id
+      username
+      profilePictureUrl
+    }
+  }
+}

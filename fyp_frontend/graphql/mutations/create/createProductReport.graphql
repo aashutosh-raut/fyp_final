@@ -1,0 +1,18 @@
+mutation CreateProductReport(
+  $comment: String!
+  $userId: String!
+  $productId: String!
+) {
+  createProductReport(
+    data: {
+      comment: $comment
+      user: { connect: { id: $userId } }
+      product: { connect: { id: $productId } }
+    }
+  ) {
+    id
+    comment
+    userId
+    productId
+  }
+}

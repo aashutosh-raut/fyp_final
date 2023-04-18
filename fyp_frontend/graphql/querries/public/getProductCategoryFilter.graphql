@@ -1,0 +1,17 @@
+query GetProductCategoryFilter($name: CategoryNameEnum!) {
+  productCategory(where: { name: ELECTRONICS }) {
+    name
+    description
+    products {
+      id
+      name
+      description
+      rentingPrice
+      isAvailable
+      condition
+      collateralDescription
+      userId
+      productCategoryName
+    }
+  }
+}

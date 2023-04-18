@@ -1,0 +1,20 @@
+mutation CreateUser(
+  $username: String!
+  $email: String!
+  $password: String!
+  $profilePictureUrl: String!
+) {
+  createUser(
+    data: {
+      username: $username
+      email: $email
+      password: $password
+      profilePictureUrl: $profilePictureUrl
+      userRole: { connect: { name: USER } }
+    }
+  ) {
+    id
+    email
+    token
+  }
+}

@@ -1,0 +1,32 @@
+query GetUserDetail($userid: String!) {
+  user(where: { id: $userid }) {
+    id
+    email
+    username
+    profilePictureUrl
+    password
+    userRoleName
+    products {
+      id
+      name
+      rentingPrice
+      productPicture
+      productCategoryName
+    }
+    userReviewsFor {
+      id
+      rating
+      comment
+      reviewer {
+        id
+        username
+        profilePictureUrl
+      }
+    }
+  }
+  aggregateUserReview(where: { revieweeUserId: { equals: $userid } }) {
+    _avg {
+      rating
+    }
+  }
+}

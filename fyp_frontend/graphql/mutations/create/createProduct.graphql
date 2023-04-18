@@ -1,0 +1,28 @@
+mutation CreateProduct(
+  $name: String!
+  $description: String!
+  $collateralDescription: String!
+  $rentingPrice: Int!
+  $isAvailable: Boolean!
+  $condition: ProductConditionEnum!
+  $id: String!
+  $productPicture: String!
+  $productCategory: CategoryNameEnum!
+) {
+  createProduct(
+    data: {
+      name: $name
+      description: $description
+      collateralDescription: $collateralDescription
+      rentingPrice: $rentingPrice
+      isAvailable: $isAvailable
+      condition: $condition
+      productPicture: $productPicture
+      user: { connect: { id: $id } }
+      productCategory: { connect: { name: $productCategory } }
+    }
+  ) {
+    name
+    description
+  }
+}

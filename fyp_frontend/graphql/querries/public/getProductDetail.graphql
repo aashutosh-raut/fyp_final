@@ -1,0 +1,50 @@
+query GetProductDetail($productId: String!, $userId: String!) {
+  product(where: { id: $productId }) {
+    id
+    name
+    description
+    collateralDescription
+    rentingPrice
+    productPicture
+    isAvailable
+    condition
+    user {
+      id
+      username
+      profilePictureUrl
+    }
+    productCategoryName
+    allReviews: productReviews {
+      id
+      rating
+      comment
+      ownersReply
+      productId
+      user {
+        id
+        username
+        profilePictureUrl
+      }
+    }
+    personReview: productReviews(
+      where: { productId: { equals: $productId }, userId: { equals: $userId } }
+    ) {
+      id
+    }
+
+    productReport(where: { userId: { equals: $userId } }) {
+      id
+      comment
+    }
+  }
+  rentRequest(
+    where: { userId_productId: { userId: $userId, productId: $productId } }
+  ) {
+    id
+  }
+  aggregateProductReview(where: { productId: { equals: $productId } }) {
+    _avg {
+      rating
+    }
+  }
+}

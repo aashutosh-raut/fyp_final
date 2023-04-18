@@ -1,0 +1,31 @@
+query GetProducts(
+  $where: ProductWhereInput
+  $take: Int!
+  $skip: Int!
+  $orderBy: [ProductOrderByWithRelationInput!]
+) {
+  products(where: $where, take: $take, skip: $skip, orderBy: $orderBy) {
+    id
+    name
+    productCategoryName
+    isAvailable
+    description
+    collateralDescription
+    rentingPrice
+    condition
+    productPicture
+    productCategoryName
+    user {
+      id
+      username
+    }
+    _count {
+      productReviews
+    }
+  }
+  aggregateProduct(where: $where) {
+    _count {
+      _all
+    }
+  }
+}

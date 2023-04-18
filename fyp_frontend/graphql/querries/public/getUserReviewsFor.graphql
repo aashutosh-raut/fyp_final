@@ -1,0 +1,10 @@
+query GetUserReviewsFor($id: String!) {
+  user(where: { id: $id }) {
+    userReviewsFor {
+      rating
+      comment
+      reviewerUserId
+      revieweeUserId
+    }
+  }
+}

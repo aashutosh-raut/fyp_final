@@ -1,0 +1,21 @@
+mutation CreateUserReview(
+  $rating: Int!
+  $comment: String!
+  $reviewer: String!
+  $reviewee: String!
+) {
+  createUserReview(
+    data: {
+      rating: $rating
+      comment: $comment
+      reviewer: { connect: { id: $reviewer } }
+      reviewee: { connect: { id: $reviewee } }
+    }
+  ) {
+    id
+    rating
+    comment
+    reviewerUserId
+    revieweeUserId
+  }
+}

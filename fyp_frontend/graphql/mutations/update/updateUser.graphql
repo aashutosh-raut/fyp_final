@@ -1,0 +1,19 @@
+mutation UpdateUser(
+  $id: String!
+  $email: String!
+  $username: String!
+  $password: String!
+  $profilePictureUrl: String!
+) {
+  updateUser(
+    data: {
+      email: { set: $email }
+      username: { set: $username }
+      password: { set: $password }
+      profilePictureUrl: { set: $profilePictureUrl }
+    }
+    where: { id: $id }
+  ) {
+    id
+  }
+}

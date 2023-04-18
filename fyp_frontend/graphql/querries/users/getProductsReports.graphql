@@ -1,0 +1,17 @@
+query GetProductReports {
+  productReports {
+    id
+    userId
+    productId
+    comment
+    createdAt
+    updatedAt
+    user {
+      username
+      email
+    }
+    product {
+      name
+    }
+  }
+}

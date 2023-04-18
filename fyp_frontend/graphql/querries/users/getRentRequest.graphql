@@ -1,0 +1,13 @@
+query GetRentRequests($productId: String!) {
+  rentRequests(where: { productId: { equals: $productId } }) {
+    id
+    rentPeriod
+    dayOfRequest
+    createdAt
+    user {
+      id
+      username
+      profilePictureUrl
+    }
+  }
+}

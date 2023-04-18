@@ -1,0 +1,19 @@
+query GetUsers {
+  users(where: { userRoleName: { equals: USER } }) {
+    id
+    username
+    email
+    profilePictureUrl
+    createdAt
+    updatedAt
+    _count {
+      products
+      productReviews
+      productReport
+      rentRequest
+      rentApprove
+      userReviewsFor
+      userReviewsBy
+    }
+  }
+}
